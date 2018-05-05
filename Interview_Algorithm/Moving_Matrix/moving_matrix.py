@@ -18,7 +18,6 @@ class Solution:
 
     def move_best_match(self):
         best_case = None
-        brk = False
         for row in range(-(self.length - 1), self.length):
             for column in range(-(self.length - 1), self.length):
                 score = self.move_difference(row, column)
@@ -26,10 +25,7 @@ class Solution:
                     self.max_moving = score
                     best_case = list([row, column]).copy()
                 else:
-                    brk = True
-                    break
-            if brk:
-                break
+                    continue
         return best_case
 
 
