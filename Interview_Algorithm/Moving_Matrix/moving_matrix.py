@@ -4,7 +4,7 @@ class Solution:
         self.matrix1 = matrix1
         self.matrix2 = matrix2
         self.length = len(matrix1)
-        self.max_moving = len(matrix1) ** 2
+        self.max_moving = len(matrix1) ** 2 + 1
 
     def move_difference(self, row, column):
         total = 0
@@ -18,12 +18,18 @@ class Solution:
 
     def move_best_match(self):
         best_case = None
+        brk = False
         for row in range(-(self.length - 1), self.length):
             for column in range(-(self.length - 1), self.length):
                 score = self.move_difference(row, column)
                 if score < self.max_moving:
                     self.max_moving = score
                     best_case = list([row, column]).copy()
+                else:
+                    brk = True
+                    break
+            if brk:
+                break
         return best_case
 
 
