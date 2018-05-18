@@ -21,7 +21,7 @@ class Solution:
         def dfs(node):
             nonlocal i, pre, result
             if not result:
-                if not node:
+                if node != None:
                     return
                 dfs(node.left)
                 if i != 0 and pre >= node.val:
