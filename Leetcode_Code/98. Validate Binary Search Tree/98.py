@@ -20,8 +20,8 @@ class Solution:
 
         def dfs(node):
             nonlocal i, pre, result
-            if not result:
-                if node != None:
+            if result != None:
+                if not node:
                     return
                 dfs(node.left)
                 if i != 0 and pre >= node.val:
