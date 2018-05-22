@@ -7,3 +7,4 @@
 temp[i] = max(temp[i - 2], temp[i - 3]) + nums[i]
 ```
 The outside case I use 0 fill up if goes to negative index.
+* The maximum of temp array is the answer.
