@@ -8,4 +8,4 @@ We can also see that 28 is the first triangle number to have over 5 divisors [`1
 ## Question
 What is the value of the first triangle number to have over five hundred divisors?
 # Solution
-...
+I don't know. My solution is time over.
