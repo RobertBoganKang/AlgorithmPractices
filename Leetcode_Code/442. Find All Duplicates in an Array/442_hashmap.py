@@ -1,8 +1,8 @@
 class Solution:
-    def findDuplicates(self, nums):
+    def singleNumber(self, nums):
         """
         :type nums: List[int]
-        :rtype: List[int]
+        :rtype: int
         """
         hashmap = {}
         # build hashmap
@@ -12,8 +12,7 @@ class Solution:
             else:
                 hashmap[nums[i]] = 1
         # find the single element
-        result = []
         for i in hashmap:
-            if hashmap[i] == 2:
-                result.append(i)
-        return result
+            if hashmap[i] == 1:
+                return i
+        return None
