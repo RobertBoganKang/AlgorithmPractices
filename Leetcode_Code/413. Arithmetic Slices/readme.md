@@ -11,5 +11,6 @@ For 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4], [3, 4, 5];
 For 4 arithmetic slices in A: [1, 2, 3, 4], [2, 3, 4, 5]; 
 For 5 arithmetic slices in A: [1, 2, 3, 4, 5].
 ```
-this number is `4 - 1 = 3`, then, `3 + 2 + 1 = 7`.
+This number is `4 - 1 = 3`, then, `3 + 2 + 1 = 7`.
+
 3. The result is calculated.
