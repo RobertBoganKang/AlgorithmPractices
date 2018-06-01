@@ -1,9 +1,9 @@
 class Solution:
     def licenseKeyFormatting(self, S, K):
         """
-        :param S: String
-        :param K: Integer
-        :return: String
+        :type S: str
+        :type K: int
+        :rtype: str
         """
 
         length = len(S)
