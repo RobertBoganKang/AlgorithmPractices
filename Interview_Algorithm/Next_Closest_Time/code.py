@@ -25,7 +25,7 @@ class Solution:
             return time[0:4] + str(next_max(m1))
         # second digit
         nm2 = next_max(m2)
-        if nm2 < 6 and nm2 < digit_arr[-1]:
+        if nm2 < 6 and nm2 <= digit_arr[-1]:
             return time[0:3] + str(nm2) + str(digit_arr[0])
         # third digit
         if h2 < 2:
