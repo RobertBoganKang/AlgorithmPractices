@@ -25,9 +25,9 @@ class Solution:
             return time[0:4] + str(next_max(m1))
         # second digit
         nm2 = next_max(m2)
-        if nm2 < 6 and nm2 <= digit_arr[-1]:
+        if nm2 < 6 and nm2 <= digit_arr[-1] and nm2 != m2:
             return time[0:3] + str(nm2) + str(digit_arr[0])
-        # third digit
+        # third and forth digit
         if h2 < 2:
             nh1 = next_max(h1)
             if h1 < digit_arr[-1]:
@@ -39,9 +39,10 @@ class Solution:
             nh1 = next_max(h1)
             if nh1 <= 3:
                 return str(h2) + str(nh1) + ":" + str(digit_arr[0]) + str(digit_arr[0])
-            else:
-                return str(digit_arr[0]) + str(digit_arr[0]) + ":" + str(digit_arr[0]) + str(digit_arr[0])
+        return str(digit_arr[0]) + str(digit_arr[0]) + ":" + str(digit_arr[0]) + str(digit_arr[0])
 
 
 s = Solution()
+print(s.nextClosestTime("11:12"))
 print(s.nextClosestTime("13:55"))
+print(s.nextClosestTime("13:33"))
