@@ -37,7 +37,7 @@ class Solution:
                 return str(nh2) + str(digit_arr[0]) + ":" + str(digit_arr[0]) + str(digit_arr[0])
         else:
             nh1 = next_max(h1)
-            if nh1 <= 3:
+            if nh1 <= 3 and nh1 != h1:
                 return str(h2) + str(nh1) + ":" + str(digit_arr[0]) + str(digit_arr[0])
         return str(digit_arr[0]) + str(digit_arr[0]) + ":" + str(digit_arr[0]) + str(digit_arr[0])
 
@@ -46,3 +46,4 @@ s = Solution()
 print(s.nextClosestTime("11:12"))
 print(s.nextClosestTime("13:55"))
 print(s.nextClosestTime("13:33"))
+print(s.nextClosestTime("23:33"))
