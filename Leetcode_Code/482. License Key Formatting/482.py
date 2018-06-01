@@ -13,7 +13,7 @@ class Solution:
         valid = 0
         while i >= 0:
             c = S[i]
-            if '0' <= c <= '9' or 'A' <= c <= 'Z' or 'a' <= c <= 'z':
+            if c != '-':
                 if valid != 0 and valid % K == 0:
                     string_builder.append("-")
                 if 'a' <= c <= 'z':
