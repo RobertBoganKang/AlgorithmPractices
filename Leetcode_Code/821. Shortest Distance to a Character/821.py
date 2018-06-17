@@ -20,16 +20,19 @@ class Solution:
                 result[i] = num
                 num += 1
                 i += 1
+            if i >= len(S):
+                if count == 0:
+                    return [0 for _ in range(len(S))]
+                break
+
             if count == 0:
                 back_num = 0
-                if i >= len(S):
-                    return [0 for _ in range(len(S))]
             else:
                 back_num = num // 2
             # backtrace
             j = i
             num = 0
-            while len(S) > j >= last + back_num:
+            while j >= last + back_num:
                 result[j] = num
                 num += 1
                 j -= 1
@@ -38,6 +41,3 @@ class Solution:
             last = i
         return result
 
-
-s = Solution()
-print(s.shortestToChar("aaba", "b"))
