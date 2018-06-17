@@ -15,10 +15,18 @@ class Solution:
                     total += grid[idx + i][idy + j]
                 if total != target:
                     return False
+
+            distinct = set()
             # check columns
             for j in range(3):
                 total = 0
                 for i in range(3):
+                    if grid[idx + j][idy + i] > 9 or grid[idx + j][idy + i] < 1:
+                        return False
+                    if grid[idx + j][idy + i] in distinct:
+                        return False
+                    else:
+                        distinct.add(grid[idx + j][idy + i])
                     total += grid[idx + j][idy + i]
                 if total != target:
                     return False
@@ -34,4 +42,3 @@ class Solution:
                 if check_magic_matrix(I, J):
                     result += 1
         return result
-
