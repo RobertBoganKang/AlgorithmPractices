@@ -59,9 +59,9 @@ class ExamRoom:
     def insert_sorted(self, arr, num):
         """
         insert element as sorted array
-        :param arr: List(int)
+        :param arr: list(int)
         :param num: int
-        :return:
+        :return: list(int)
         """
         i = 0
         while i < len(arr) and arr[i] < num:
