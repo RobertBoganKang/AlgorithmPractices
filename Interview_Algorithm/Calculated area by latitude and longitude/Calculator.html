@@ -67,7 +67,12 @@
                     var2 += hoz[i % len] * vir[(i + len - 1) % len];
                 }
                 let area = Math.abs(var1 - var2) / 2;
-                document.getElementById("out").innerHTML = area.toString() + " (m^2)";
+                if (isNaN(area)) {
+                    area = "..."
+                } else {
+                    area = area.toLocaleString();
+                }
+                document.getElementById("out").innerHTML = area + " (m^2)";
             } else {
                 document.getElementById("out").innerHTML = "...";
             }
