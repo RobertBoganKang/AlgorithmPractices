@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>经纬度计算器</title>
+    <style>
+        input {
+            width: 400px;
+            height: 20px;
+        }
+
+        .output {
+            color: red;
+            font-size: large;
+        }
+
+        .calculator {
+            border: 1px gray solid;
+            width: 500px;
+        }
+    </style>
+    <script>
+        function trim_split(str) {
+            const trimed = str.trim();
+            return trimed.split(' ');
+        }
+
+        function extract2degree(str) {
+            if (str.indexOf('_') > -1 && str.charAt(str.length - 1) !== '_') {
+                let trim = str.split('_');
+                let i = 0, deg = 0, precision = 1;
+                while (i < trim.length) {
+                    deg += parseFloat(trim[i]) * precision;
+                    i++;
+                    precision /= 60;
+                }
+                return deg
+            } else {
+                return parseFloat(str);
+            }
+        }
+
+        function get_area() {
+            /*string processing*/
+            let jd = document.getElementById("jingdu").value;
+            let wd = document.getElementById("weidu").value;
+            jd = trim_split(jd);
+            wd = trim_split(wd);
+            let len = jd.length;
+            if (wd.length === jd.length && len > 2) {
+                /*calculate vertical coordinate*/
+                let vertical_scale = 2 * Math.PI * 63710000 / 360;
+                let vir = [];
+                for (let i = 0; i < len; i++) {
+                    vir.push((extract2degree(jd[i]) - extract2degree(jd[0])) * vertical_scale);
+                }
+                /*calculate horizontal coordinate*/
+                let hoz = [];
+                for (let i = 0; i < len; i++) {
+                    let horizontal_scale = vertical_scale * Math.cos(parseFloat(wd[i]) * Math.PI / 180);
+                    hoz.push((extract2degree(wd[i]) - extract2degree(wd[0])) * horizontal_scale);
+                }
+                /*calculate area*/
+                let var1 = 0, var2 = 0;
+                for (let i = 0; i < hoz.length; i++) {
+                    var1 += hoz[i % len] * vir[(i + 1) % len];
+                    var2 += hoz[i % len] * vir[(i + len - 1) % len];
+                }
+                let area = Math.abs(var1 - var2) / 2;
+                document.getElementById("out").innerHTML = area.toString() + " (m^2)";
+            } else {
+                document.getElementById("out").innerHTML = "...";
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>经纬度面积计算器</h1>
+<div class="calculator">
+    <table>
+        <tr onclick="get_area()">
+            <th colspan="1">
+                <span>输入经度</span>
+            </th>
+            <td colspan="10">
+                <input type="text" placeholder="输入经度" id="jingdu" onkeyup="get_area()" value="0 0 1 1">
+            </td>
+        </tr>
+        <tr onclick="get_area()">
+            <th>
+                <span>输入纬度</span>
+            </th>
+            <td>
+                <input type="text" placeholder="输入纬度" id="weidu" onkeyup="get_area()" value="0 1 1 0">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <p>计算结果:</p>
+            </th>
+            <td><span id="out" class="output"></span></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
