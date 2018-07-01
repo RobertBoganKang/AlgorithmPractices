@@ -70,9 +70,9 @@
                 if (isNaN(area)) {
                     area = "..."
                 } else {
-                    area = area.toLocaleString();
+                    area = area.toLocaleString() + " (m^2)";
                 }
-                document.getElementById("out").innerHTML = area + " (m^2)";
+                document.getElementById("out").innerHTML = area;
             } else {
                 document.getElementById("out").innerHTML = "...";
             }
